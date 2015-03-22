@@ -1,7 +1,7 @@
 package au.net.woodberry.services.yahoofinance.impl;
 
 import au.net.woodberry.services.yahoofinance.domain.HistoricalPrice;
-import au.net.woodberry.services.yahoofinance.impl.page.quotes.HistoricalPricesPage;
+import au.net.woodberry.services.yahoofinance.domain.page.HistoricalPricesPage;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;

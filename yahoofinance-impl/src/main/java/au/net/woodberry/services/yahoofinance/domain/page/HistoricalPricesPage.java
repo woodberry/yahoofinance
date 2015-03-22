@@ -1,4 +1,4 @@
-package au.net.woodberry.services.yahoofinance.impl.page.quotes;
+package au.net.woodberry.services.yahoofinance.domain.page;
 
 import au.net.woodberry.services.yahoofinance.YahooFinancePage;
 import au.net.woodberry.services.yahoofinance.domain.HistoricalPrice;
