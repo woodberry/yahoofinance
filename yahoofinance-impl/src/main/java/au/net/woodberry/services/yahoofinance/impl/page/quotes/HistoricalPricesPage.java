@@ -30,12 +30,12 @@ public class HistoricalPricesPage implements YahooFinancePage<List<HistoricalPri
             return result.getObjects();
         } catch (IOException e) {
             throw new RemoteServiceInvalidResponseException("An exception of type: " + e.getClass().getCanonicalName()
-                    + " has occurred while retrieve URL: " + URL
+                    + " has occurred while fetching URL: " + URL
                     + " with message: " + (e.getMessage() == null ? "No message" : e.getMessage())
                     + " Caused by: " + (e.getCause() == null ? "No cause" : e.getCause()), e);
         } catch (CsvErrorsExceededException e) {
             throw new RemoteServiceInvalidResponseException("An exception of type: " + e.getClass().getCanonicalName()
-                    + " has occurred while parsing the response: " + URL
+                    + " has occurred while parsing the URL response: " + URL
                     + " with message: " + (e.getMessage() == null ? "No message" : e.getMessage())
                     + " Caused by: " + (e.getCause() == null ? "No cause" : e.getCause()), e);
         }
