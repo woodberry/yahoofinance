@@ -1,0 +1,140 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <groupId>au.net.woodberry.services</groupId>
+    <artifactId>yahoofinance</artifactId>
+    <version>1.0.4-SNAPSHOT</version>
+    <name>${base.name} :: Parent POM</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>yahoofinance-impl</module>
+        <module>yahoofinance-integration-tests</module>
+    </modules>
+
+    <distributionManagement>
+        <repository>
+            <id>woodberry-nexus</id>
+            <name>Woodberry Nexus Releases</name>
+            <url>http://repositories.woodberry.net.au/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>woodberry-nexus</id>
+            <name>Woodberry Nexus Snapshots</name>
+            <url>http://repositories.woodberry.net.au/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>woodberry-nexus</id>
+            <name>Woodberry Nexus Repository</name>
+            <url>http://repositories.woodberry.net.au/nexus/content/groups/public/</url>
+            <snapshots>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <properties>
+        <base.name>YahooFinance Service</base.name>
+
+        <!-- versions -->
+        <joda-time.version>2.4</joda-time.version>
+        <junit.version>4.11</junit.version>
+        <guava.version>15.0</guava.version>
+        <csvengine.version>1.3.6</csvengine.version>
+        <mockito.version>1.8.5</mockito.version>
+        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <maven.failsafe.version>2.18.1</maven.failsafe.version>
+        <maven.surefire.version>2.18.1</maven.surefire.version>
+
+        <!-- general properties -->
+        <source-compatibility>1.7</source-compatibility>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>fr.ybonnel</groupId>
+                <artifactId>csvengine</artifactId>
+                <version>${csvengine.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+
+            <!-- Test -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+            
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven.surefire.version}</version>
+                    <configuration>
+                        <!-- Never run these during any goal automatically -->
+                        <excludes>
+                            <exclude>**/*IntegrationTest.java</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${maven.failsafe.version}</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>integration-test</goal>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${source-compatibility}</source>
+                        <target>${source-compatibility}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
