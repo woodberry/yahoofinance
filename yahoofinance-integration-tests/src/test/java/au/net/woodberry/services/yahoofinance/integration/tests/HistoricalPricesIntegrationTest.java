@@ -3,6 +3,7 @@ package au.net.woodberry.services.yahoofinance.integration.tests;
 import au.net.woodberry.services.yahoofinance.domain.HistoricalPrice;
 import au.net.woodberry.services.yahoofinance.enums.Frequency;
 import au.net.woodberry.services.yahoofinance.impl.YahooFinanceServiceImpl;
+import au.net.woodberry.services.yahoofinance.impl.exceptions.RemoteServiceInvalidResponseException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,14 +23,28 @@ public class HistoricalPricesIntegrationTest {
     
     @Test
     public void testAsxStock() {
-        List<HistoricalPrice> result = yahooFinanceService.getHistoricalPrices("BHP", Frequency.MONTH);
+        List<HistoricalPrice> result = yahooFinanceService.getHistoricalPrices("BHP.AX", Frequency.MONTH);
+        assertNotNull(result);
+        assertTrue(!result.isEmpty());
+    }
+
+    @Test(expected = RemoteServiceInvalidResponseException.class)
+    public void testAsxStockInvalid() {
+        List<HistoricalPrice> result = yahooFinanceService.getHistoricalPrices("a1b2c3d4", Frequency.MONTH);
         assertNotNull(result);
         assertTrue(!result.isEmpty());
     }
 
     @Test
     public void testAustralianEquitiesIndex() {
-        List<HistoricalPrice> result = yahooFinanceService.getHistoricalPrices("^AXJO", Frequency.DAY);
+        List<HistoricalPrice> result = yahooFinanceService.getHistoricalPrices("^AXNJ", Frequency.DAY);
+        assertNotNull(result);
+        assertTrue(!result.isEmpty());
+    }
+
+    @Test
+    public void testAustralianEquitiesIndexInvalid() {
+        List<HistoricalPrice> result = yahooFinanceService.getHistoricalPrices("^A", Frequency.DAY);
         assertNotNull(result);
         assertTrue(!result.isEmpty());
     }
