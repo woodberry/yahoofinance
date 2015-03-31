@@ -1,7 +1,7 @@
-package au.net.woodberry.services.yahoofinance.domain.page;
+package au.net.woodberry.services.yahoofinance.domain;
 
-import au.net.woodberry.services.yahoofinance.YahooFinancePage;
-import au.net.woodberry.services.yahoofinance.domain.HistoricalPrice;
+import au.net.woodberry.services.yahoofinance.YahooFinanceData;
+import au.net.woodberry.services.yahoofinance.domain.csv.HistoricalPrice;
 import au.net.woodberry.services.yahoofinance.impl.exceptions.RemoteServiceInvalidResponseException;
 import fr.ybonnel.csvengine.CsvEngine;
 import fr.ybonnel.csvengine.exception.CsvErrorsExceededException;
@@ -11,16 +11,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-public class HistoricalPricesPage implements YahooFinancePage<List<HistoricalPrice>> {
+public class HistoricalPrices implements YahooFinanceData<List<HistoricalPrice>> {
 
     private final CsvEngine csvEngine;
 
-    public HistoricalPricesPage(CsvEngine csvEngine) {
-        this.csvEngine = csvEngine;
-    }
-    
-    public HistoricalPricesPage() {
+    public HistoricalPrices() {
         this.csvEngine = new CsvEngine(HistoricalPrice.class);
+    }
+
+    HistoricalPrices(CsvEngine csvEngine) {
+        this.csvEngine = csvEngine;
     }
 
     @Override

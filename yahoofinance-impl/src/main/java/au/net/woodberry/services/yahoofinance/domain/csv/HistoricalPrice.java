@@ -1,7 +1,7 @@
-package au.net.woodberry.services.yahoofinance.domain;
+package au.net.woodberry.services.yahoofinance.domain.csv;
 
-import au.net.woodberry.services.yahoofinance.domain.adapters.AdapterBigInteger;
-import au.net.woodberry.services.yahoofinance.domain.adapters.AdapterYahooLocalDate;
+import au.net.woodberry.services.yahoofinance.domain.csv.adapters.AdapterBigInteger;
+import au.net.woodberry.services.yahoofinance.domain.csv.adapters.AdapterYahooLocalDate;
 import fr.ybonnel.csvengine.adapter.AdapterDouble;
 import fr.ybonnel.csvengine.annotation.CsvColumn;
 import fr.ybonnel.csvengine.annotation.CsvFile;

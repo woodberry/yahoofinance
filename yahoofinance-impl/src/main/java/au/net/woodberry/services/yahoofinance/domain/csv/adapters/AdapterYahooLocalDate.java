@@ -1,4 +1,4 @@
-package au.net.woodberry.services.yahoofinance.domain.adapters;
+package au.net.woodberry.services.yahoofinance.domain.csv.adapters;
 
 import fr.ybonnel.csvengine.adapter.AdapterCsv;
 import org.joda.time.LocalDate;
