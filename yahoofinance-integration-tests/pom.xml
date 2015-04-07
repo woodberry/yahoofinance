@@ -7,7 +7,7 @@
     <parent>
         <artifactId>yahoofinance</artifactId>
         <groupId>au.net.woodberry.services</groupId>
-        <version>1.0.5-SNAPSHOT</version>
+        <version>1.0.6-SNAPSHOT</version>
     </parent>
    
     <artifactId>yahoofinance-integration-tests</artifactId>

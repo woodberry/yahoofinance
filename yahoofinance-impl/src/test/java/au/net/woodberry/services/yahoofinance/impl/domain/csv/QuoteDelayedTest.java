@@ -28,8 +28,8 @@ public class QuoteDelayedTest {
         assertThat(quoteDelayed.getDateTime()).isEqualTo(DateUtils.construct(date, time, DateTimeZone.UTC));
         assertThat(quoteDelayed.getChange()).isEqualTo(-4.10); // Negative value
         assertThat(quoteDelayed.getOpen()).isEqualTo(5073.99);
-        assertThat(quoteDelayed.getDaysRangeLow()).isEqualTo(5098.86);
-        assertThat(quoteDelayed.getDaysRangeHigh()).isEqualTo(5071.32);
+        assertThat(quoteDelayed.getDaysRangeHigh()).isEqualTo(5098.86);
+        assertThat(quoteDelayed.getDaysRangeLow()).isEqualTo(5071.32);
         assertThat(quoteDelayed.getVolume()).isEqualTo(0);
     }
 
@@ -47,8 +47,8 @@ public class QuoteDelayedTest {
         assertThat(quoteDelayed.getDateTime()).isEqualTo(DateUtils.construct(date, time, DateTimeZone.UTC));
         assertThat(quoteDelayed.getChange()).isEqualTo(0.93); // Positive value
         assertThat(quoteDelayed.getOpen()).isEqualTo(30.80);
-        assertThat(quoteDelayed.getDaysRangeLow()).isEqualTo(31.10);
-        assertThat(quoteDelayed.getDaysRangeHigh()).isEqualTo(30.80);
+        assertThat(quoteDelayed.getDaysRangeHigh()).isEqualTo(31.10);
+        assertThat(quoteDelayed.getDaysRangeLow()).isEqualTo(30.80);
         assertThat(quoteDelayed.getVolume()).isEqualTo(7356402);
     }
 

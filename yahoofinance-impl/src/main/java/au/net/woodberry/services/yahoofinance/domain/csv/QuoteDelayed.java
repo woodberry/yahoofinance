@@ -129,8 +129,8 @@ public class QuoteDelayed {
         private static final int TIME = 3;
         private static final int CHANGE = 4;
         private static final int OPEN = 5;
-        private static final int DAYS_RANGE_LOW = 6;
-        private static final int DAYS_RANGE_HIGH = 7;
+        private static final int DAYS_RANGE_HIGH = 6;
+        private static final int DAYS_RANGE_LOW = 7;
         private static final int VOLUME = 8;
 
         public static QuoteDelayed convert(InputStream inputStream) throws IOException {
@@ -148,8 +148,8 @@ public class QuoteDelayed {
                 quoteDelayed.setDateTime(DateUtils.construct(date, time, DATE_TIME_ZONE));
                 quoteDelayed.setChange(Double.valueOf(lineData.get(CHANGE)));
                 String open = lineData.get(OPEN);
-                String daysRangeLow = lineData.get(DAYS_RANGE_LOW);
                 String daysRangeHigh = lineData.get(DAYS_RANGE_HIGH);
+                String daysRangeLow = lineData.get(DAYS_RANGE_LOW);
                 quoteDelayed.setOpen(open.equals(NA) ? null : Double.valueOf(open));
                 quoteDelayed.setDaysRangeLow(daysRangeLow.equals(NA) ? null : Double.valueOf(daysRangeLow));
                 quoteDelayed.setDaysRangeHigh(daysRangeHigh.equals(NA) ? null : Double.valueOf(daysRangeHigh));
